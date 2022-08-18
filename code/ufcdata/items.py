@@ -8,8 +8,9 @@
 @License :   (C)Copyright 2020-2021, Neel Gokhale
 '''
 
-from scrapy import Item, Field
+from scrapy import Field, Item
 from scrapy.loader.processors import TakeFirst
+
 
 class Event(Item):
     event_id = Field(output_processor=TakeFirst())
