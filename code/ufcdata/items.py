@@ -9,8 +9,8 @@
 '''
 
 from scrapy import Field, Item
-from scrapy.loader.processors import TakeFirst
-
+# from scrapy.loader.processors import TakeFirst
+from itemloaders.processors import TakeFirst
 
 class Event(Item):
     event_id = Field(output_processor=TakeFirst())
@@ -27,7 +27,7 @@ class Fight(Item):
     fight_id = Field(output_processor=TakeFirst())
     event_id = Field(output_processor=TakeFirst())
     weight_class = Field(output_processor=TakeFirst())
-    rds_scheduled = Field(output_processor=TakeFirst())
+    rds_sched = Field(output_processor=TakeFirst())
     method = Field(output_processor=TakeFirst())
     rd_ended = Field(output_processor=TakeFirst())
     time_last_rd = Field(output_processor=TakeFirst())
@@ -43,7 +43,7 @@ class Round(Item):
     rd_id = Field(output_processor=TakeFirst())
     fight_id = Field(output_processor=TakeFirst())
     rd_num = Field(output_processor=TakeFirst())
-    length = Field(output_processor=TakeFirst())
+    rd_length = Field(output_processor=TakeFirst())
     create_date = Field(output_processor=TakeFirst())
     
 
@@ -79,6 +79,7 @@ class RoundStat(Item):
     ctrl = Field(output_processor=TakeFirst())
     
     # DEFENSIVE
+    opp_kd = Field(output_processor=TakeFirst())
     opp_sig_head_made = Field(output_processor=TakeFirst())
     opp_sig_head_att = Field(output_processor=TakeFirst())
     opp_sig_body_made = Field(output_processor=TakeFirst())
@@ -117,5 +118,5 @@ class Fighter():
     draws = Field(output_processor=TakeFirst())
     belt = Field(output_processor=TakeFirst())
     last_fight_date = Field(output_processor=TakeFirst())
-    latest_weightclass = Field(output_processor=TakeFirst())
+    latest_weight_class = Field(output_processor=TakeFirst())
     create_date = Field(output_processor=TakeFirst())

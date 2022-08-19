@@ -110,7 +110,7 @@ class DatabaseQuery():
         self.engine.execute('DELETE FROM rounds WHERE rd_id=\'' + rd_id + '\'')
     
     def delete_round_result_record(self, rd_result_id):
-        self.engine.execute('DELETE FROM round_results WHERE rd_result_id=\'' + rd_result_id + '\'')
+        self.engine.execute('DELETE FROM round_stats WHERE rd_result_id=\'' + rd_result_id + '\'')
     
     def delete_fighter_record(self, fighter_id):
         self.engine.execute('DELETE FROM fighters WHERE fighter_id=\'' + fighter_id + '\'')    

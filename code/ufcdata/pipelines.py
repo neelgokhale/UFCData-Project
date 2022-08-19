@@ -26,7 +26,7 @@ class UfcDataPipeline():
         create_table(engine)
         self.Session = sessionmaker(bind=engine)
         
-    def process_item(self, item) -> Item:
+    def process_item(self, item, spider) -> Item:
         """Load scrapy Item to postgres database
 
         Args:

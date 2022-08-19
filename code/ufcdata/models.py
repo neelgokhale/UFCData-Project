@@ -2,7 +2,7 @@ from sqlalchemy import Column, DateTime, Float, Integer, String, create_engine
 from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
 
-import ufcdata.settings
+from ufcdata.settings import DATABASE
 
 DeclarativeBase = declarative_base()
 
@@ -13,7 +13,12 @@ def db_connect():
         sqlalchemy.create_engine: returns create_engine instance with database URL
     """
     
-    return create_engine(URL(**ufcdata.settings.DATABASE))
+    # Per error report in: 
+    # https://stackoverflow.com/questions/62688256/sqlalchemy-exc-nosuchmoduleerror-cant-load-plugin-sqlalchemy-dialectspostgre
+    # url = URL(**DATABASE)
+    
+    url = 'postgresql://neelgokhale@localhost:5432/ufcdata'
+    return create_engine(url)
 
 def create_table(engine):
     DeclarativeBase.metadata.create_all(engine)
@@ -40,7 +45,7 @@ class FightTable(DeclarativeBase):
     id = Column(Integer, primary_key=True)
     fight_id = Column('fight_id', String, nullable=True, unique=True)
     event_id = Column('event_id', String, nullable=True)
-    weightclass = Column('weightclass', String, nullable=True)
+    weight_class = Column('weight_class', String, nullable=True)
     rds_sched = Column('rds_sched', String, nullable=True)
     rd_ended = Column('rd_ended', String, nullable=True)
     method = Column('method', String, nullable=True)
@@ -160,5 +165,5 @@ class FighterTable(DeclarativeBase):
     draws = Column('draws', Integer, nullable=True)
     belt = Column('belt', String, nullable=True)
     last_fight_data = Column('last_fight_data', String, nullable=True)
-    latest_weightclass = Column('latest_weightclass', String, nullable=True)
+    latest_weight_class = Column('latest_weight_class', String, nullable=True)
     create_date = Column('create_date', String, nullable=True)
