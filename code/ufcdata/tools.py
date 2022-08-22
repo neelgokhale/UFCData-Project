@@ -8,6 +8,8 @@
 @License :   (C)Copyright 2020-2021, Neel Gokhale
 '''
 
+import pandas as pd
+
 def strip_remove_blanks(string_list) -> list:
     """Returns a list of strings without any blanks
 
@@ -59,3 +61,18 @@ def judge_round_scores(round_scores, f1_list, f2_list, j, correct_position):
     else:
         f2_list.append(round_scores[j+1])
         f1_list.append(round_scores[j+2])
+
+def query_to_df(query) -> pd.DataFrame:
+    """Transforms query object (dict-like) into a pandas DataFrame
+
+    Args:
+        `query` (`any`): query object. Recommended usage is by returning it as an object through a specified function in query.py
+
+    Returns:
+        `pd.DataFrame`: _description_
+    """
+    
+    df = pd.DataFrame(query.fetchall())
+    df.columns = query.keys()
+    
+    return df

@@ -132,7 +132,7 @@ class DatabaseQuery():
         """
         
         last_fight = self.engine.execute(
-            'SELECT fights.event_id, weightclass, fighter_1_id, fighter_2_id, event_date FROM fights ' + 
+            'SELECT fights.event_id, weight_class, fighter_1_id, fighter_2_id, event_date FROM fights ' + 
             'INNER JOIN events ON fights.event_id=events.event_id ' +
             'WHERE fighter_1_id=\''+fighter_id+'\' or fighter_2_id=\''+fighter_id+'\' ' +
             'ORDER BY event_date DESC ' + 
@@ -187,7 +187,7 @@ class DatabaseQuery():
         sql_selection = (
             'SELECT fights.fight_id FROM fights ' +
             'INNER JOIN events ON fights.event_id=events.event_id ' +
-            'INNER JOIN fighters fighter_1 ON fights.fighter_1_id=fighter_1.figher_id ' +
+            'INNER JOIN fighters fighter_1 ON fights.fighter_1_id=fighter_1.fighter_id ' +
             'INNER JOIN fighters fighter_2 ON fights.fighter_2_id=fighter_2.fighter_id ')
         
         # first-pass: search by combination of last names and date
@@ -276,4 +276,39 @@ class DatabaseQuery():
             'LIMIT 1')
         
         return latest_date.fetchone()[0]
+
+    def get_round_stats(self):
+        query = self.engine.execute('SELECT * FROM round_stats')
+        return query
     
+    def get_fights_decision(self):
+        """
+        Only returns fights that ended in a decision.
+        """
+        query = self.engine.execute('SELECT * '
+                                    + 'FROM fights '
+                                    + 'WHERE method like \'Decision%%\' AND judge1_fighter1 > 0'
+                                   )
+        return query
+    
+    def get_fighter_names(self):
+        query = self.engine.execute('SELECT fighter_id, first_name, last_name '
+                                    + 'FROM fighters'
+                                   )
+        return query
+        
+    def get_event_dates(self):
+        query = self.engine.execute('SELECT event_id, event_date '
+                                    + 'FROM events'
+                                   )
+        return query
+    
+    def get_round_scoring(self):
+        """
+        Only returns round data for fights that ended in a decision.
+        """
+        query = self.engine.execute('SELECT * '
+                                    + 'FROM rounds '
+                                    + 'WHERE judge1_fighter1 > 0'
+                                   )
+        return query

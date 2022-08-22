@@ -164,6 +164,6 @@ class FighterTable(DeclarativeBase):
     losses = Column('losses', Integer, nullable=True)
     draws = Column('draws', Integer, nullable=True)
     belt = Column('belt', String, nullable=True)
-    last_fight_data = Column('last_fight_data', String, nullable=True)
+    last_fight_date = Column('last_fight_date', String, nullable=True)
     latest_weight_class = Column('latest_weight_class', String, nullable=True)
     create_date = Column('create_date', String, nullable=True)

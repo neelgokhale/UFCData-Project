@@ -101,7 +101,7 @@ class RoundStat(Item):
     opp_ctrl = Field(output_processor=TakeFirst())
     
 
-class Fighter():
+class Fighter(Item):
     fighter_id = Field(output_processor=TakeFirst())
     first_name = Field(output_processor=TakeFirst())
     last_name = Field(output_processor=TakeFirst())

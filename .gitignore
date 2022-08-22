@@ -1,3 +1,5 @@
 code/ufcdata/test.py
 __pycache__/
 crawls/
+.ipynb_checkpoints
+scrape.sh
