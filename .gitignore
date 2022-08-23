@@ -3,3 +3,4 @@ __pycache__/
 crawls/
 .ipynb_checkpoints
 scrape.sh
+code/data

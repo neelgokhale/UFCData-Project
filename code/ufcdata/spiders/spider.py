@@ -90,8 +90,16 @@ class PerformanceSpider(Spider):
             event_list = [event for event in event_list if event.extract().split('/')[-1] == event_to_update]
             if not event_list:
                 raise CloseSpider('\n\nThis \'event_id\' does not exist on ufcstats.com.\n\n')
+        
+        tot_events = len(event_list)
+        
+        for num, event in enumerate(event_list):
+            print("-" * 50)
+            print()
+            print(f"EVENT {num} / {tot_events} --> {round(num / tot_events)}% COMPLETE")
+            print()
+            print("-" * 50)
             
-        for event in event_list:
             yield response.follow(url=event,
                                   callback=self.parse_event,
                                   cb_kwargs=dict(today=today))
@@ -314,7 +322,7 @@ class PerformanceSpider(Spider):
                     l.add_value('opp_reversals', int(opp_stats[10]))
                     
                     try:
-                        opp_ctrl = time_to_sec(stats[11])
+                        opp_ctrl = time_to_sec(opp_stats[11])
                         if isinstance(opp_ctrl, Exception):
                             raise opp_ctrl
                         else:
