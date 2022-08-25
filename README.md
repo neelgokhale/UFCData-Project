@@ -1,6 +1,6 @@
 # UFC Data Science Project
 
-![TDA analysis of MLP Classification model](img\title.png)
+![TDA analysis of MLP Classification model](img/title.png)
 *Pictured above - a TDA network of predicted fight outcomes based on the data retrieved using this tool. Refer to [notebook](https://github.com/neelgokhale/UFCData-Project/blob/master/code/ML%20Model.ipynb).*
 
 This project is a composite tool that contains:
