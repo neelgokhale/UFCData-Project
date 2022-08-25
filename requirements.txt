@@ -1,3 +1,6 @@
 SQLAlchemy
 Scrapy
 psycopg2
+pandas
+numpy
+unidecode
