@@ -1,17 +1,20 @@
 # UFC Data Science Project
 
+![TDA analysis of MLP Classification model](img\title.png)
+*Pictured above - a TDA network of predicted fight outcomes based on the data retrieved using this tool. Refer to [notebook](https://github.com/neelgokhale/UFCData-Project/blob/master/code/ML%20Model.ipynb).*
+
 This project is a composite tool that contains:
 * A scraper and retriver of UFC data from [the UFC stats archive](http://ufcstats.com/) and the [MMA decisions archive](http://www.mmadecisions.com). Periodically uploads all data into a PostGres SQL warehouse.
 * A Python package to easily query the warehouse for specific datasets and support projects involving UFC data.
-* An example showcasing a [classification neural network]() that predicts fight outcomes based on actions taken by fighters.
+* An example showcasing a [classification neural network](https://github.com/neelgokhale/UFCData-Project/blob/master/code/ML%20Model.ipynb) that predicts fight outcomes based on actions taken by fighters.
 
 ## Installation
 
-Install the `ufcdata` package in the `root\code` directory.
+Download the `ufcdata` package in the `root\code` directory.
 
 ## Requirements
 
-All requirements are captured in the [`requirements.txt`]() file in the root directory.
+All requirements are captured in the [`requirements.txt`](https://github.com/neelgokhale/UFCData-Project/blob/master/requirements.txt) file in the root directory.
 
 ## Usage
 
@@ -29,4 +32,3 @@ df_all_rounds = query_to_df(query)
 df_fights_finished = df_all_fights.loc[(df_all_fights['method'].str.contains('KO'))
 
 ```
-
