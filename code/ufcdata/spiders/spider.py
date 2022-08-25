@@ -69,6 +69,7 @@ class PerformanceSpider(Spider):
         
         db_events = []
         event_to_update = ''
+        update_only_rounds_table = False
         
         if event_update == 1:
             db_events = self.DQ.query_event_list()

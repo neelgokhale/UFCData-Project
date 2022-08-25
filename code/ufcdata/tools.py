@@ -38,7 +38,7 @@ def time_to_sec(time) -> int:
     try:
         min_sec = time.split(':')
         sec = int(min_sec[1])
-        min_in_sec = int(min_sec[0])
+        min_in_sec = int(min_sec[0]) * 60
     except (IndexError, TypeError) as e:
         return e
     
