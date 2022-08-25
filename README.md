@@ -4,9 +4,15 @@
 *Pictured above - a TDA network of predicted fight outcomes based on the data retrieved using this tool. Refer to [notebook](https://github.com/neelgokhale/UFCData-Project/blob/master/code/ML%20Model.ipynb).*
 
 This project is a composite tool that contains:
+
+### Python Package `ufcdata`
+
 * A scraper and retriever of UFC data from [the UFC stats archive](http://ufcstats.com/) and the [MMA decisions archive](http://www.mmadecisions.com). Periodically uploads all data into a PostGres SQL warehouse.
 * A Python package to easily query the warehouse for specific datasets and support projects involving UFC data.
-* An example showcasing a [classification neural network](https://github.com/neelgokhale/UFCData-Project/blob/master/code/ML%20Model.ipynb) that predicts fight outcomes based on actions taken by fighters.
+
+### Classification Network
+
+An example showcasing a [classification neural network](https://github.com/neelgokhale/UFCData-Project/blob/master/code/ML%20Model.ipynb) that predicts fight outcomes based on actions taken by fighters using the data sourced by `ufcdata`.
 
 ## Installation
 
