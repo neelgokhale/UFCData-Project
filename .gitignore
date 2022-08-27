@@ -4,3 +4,6 @@ crawls/
 .ipynb_checkpoints
 scrape.sh
 code/data
+code/Building_Dataset.ipynb
+code/PCA_Modeling.ipynb
+code/UMAP.ipynb
